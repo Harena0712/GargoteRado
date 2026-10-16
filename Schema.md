@@ -33,3 +33,16 @@ qui aurait pu causé des resultats incorrect car pour la base `lat Malagasy` et 
 
 ### Reponse au piege
 - J'ai placé la quantié dans la table commandeDetails
+
+
+## Étape 4 – Les habitués
+### Schema relationnelle 
+- clients(**id**, nom) `(nouveau)`
+- commandes(**id**, date, #idClient) `(modifié)`
+
+### Reponse au piege
+- Non, la clé étangère est NULL
+- Il faut la jointure `LEFT JOIN` pour ne prendre aucune commande
+
+Étape 04 : <Certains clients sont des habitués, je veux les reconnaître. Mais la plupart sont de passage et je
+ne leur demande rien.>.
