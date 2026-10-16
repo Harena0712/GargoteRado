@@ -25,3 +25,11 @@ plats, on aurait pas pu avoir le nombre de plat par categorie car avoir une colo
 
 qui aurait pu causé des resultats incorrect car pour la base `lat Malagasy` et `Plat Malgache` sont different
 
+
+## Étape 3 – Les commandes
+### Schema relationnelle 
+- commandes(**id**, date) `(nouveau)`
+- commandeDetails(**id**, **#idCommande**, **#idPlat**, quantite) `(nouveau)`
+
+### Reponse au piege
+- J'ai placé la quantié dans la table commandeDetails

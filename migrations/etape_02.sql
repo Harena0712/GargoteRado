@@ -21,4 +21,7 @@ UPDATE plats SET idCategorie = 4 WHERE libelle = 'Mofo gasy (les 4)';
 UPDATE plats SET idCategorie = 5 WHERE id = 7;
 
 -- Verification 
-SELECT c.libelle AS categorie, COUNT(p.libelle) AS nbPlats FROM plats p JOIN categories c ON c.id = p.idCategorie GROUP BY c.libelle;
+SELECT c.libelle AS categorie, COUNT(p.libelle) AS nbPlats 
+FROM plats p JOIN categories c 
+ON c.id = p.idCategorie 
+GROUP BY c.libelle;
