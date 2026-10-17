@@ -44,5 +44,13 @@ qui aurait pu causé des resultats incorrect car pour la base `lat Malagasy` et 
 - Non, la clé étangère est NULL
 - Il faut la jointure `LEFT JOIN` pour ne prendre aucune commande
 
-Étape 04 : <Certains clients sont des habitués, je veux les reconnaître. Mais la plupart sont de passage et je
-ne leur demande rien.>.
+
+## Étape 5 – Serveurs et tables
+### Schema relationnelle 
+- serveues(**id**, nom) `(nouveau)`
+- tables(**id**, libelle) `(nouveau)`
+- commandes(**id**, date, **#idClient**, **#idServeur**, **#idTable**) `(modifié)`
+
+### Reponse au piege
+- Une table de la salle et une commande sont deux choses différentes car une `table` de la salle sert juste d'information pour savoir où mettre la `commande`, tandis que la `commande` contient la reference de la table ainsi que les informatins du `client` et les details du `commande`
+- Le nom `table` pose un probleme en SQL car c'est un mot qui existe deja dans SQL pour representé une table de base de données
