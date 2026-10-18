@@ -33,12 +33,3 @@ UPDATE commandes SET idclient = 1, idserveur = 1, idtable = 3 WHERE id = 3;
 UPDATE commandes SET idclient = 2, idserveur = 2, idtable = 4 WHERE id = 4;
 UPDATE commandes SET idclient = 1, idserveur = 2, idtable = 5 WHERE id = 5;
 UPDATE commandes SET idclient = 2, idserveur = 1, idtable = 6 WHERE id = 6;
-
--- Verification
-
-SELECT s.nom AS serveur, COUNT(DISTINCT c.id) AS nbCommande, COALESCE(SUM(p.prix * cd.quantite), 0) AS chiffreAffaire
-FROM commandes c 
-LEFT JOIN serveurs s ON c.idServeur = s.id
-LEFT JOIN commandeDetails cd ON cd.idCommande = c.id
-LEFT JOIN plats p ON p.id = cd.idPlat
-GROUP BY s.nom;

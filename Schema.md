@@ -13,6 +13,7 @@
 ### Schema relationnelle 
 - categories(**id**, libelle) `(nouveau)`
 - plats(**id**, libelle, prix, #idCategorie) `(modifié)`
+  - Ajout du colonne `#idCategorie`
 
 ### Reponse au piege
 - Si on a simplement ajouter une colonne categorie VARCHAR(50) dans la table des
@@ -38,7 +39,8 @@ qui aurait pu causé des resultats incorrect car pour la base `lat Malagasy` et 
 ## Étape 4 – Les habitués
 ### Schema relationnelle 
 - clients(**id**, nom) `(nouveau)`
-- commandes(**id**, date, #idClient) `(modifié)`
+- commandes(**id**, date, #idClient?) `(modifié)`
+  - Ajout du colonne `#idClient`
 
 ### Reponse au piege
 - Non, la clé étangère est NULL
@@ -49,8 +51,24 @@ qui aurait pu causé des resultats incorrect car pour la base `lat Malagasy` et 
 ### Schema relationnelle 
 - serveues(**id**, nom) `(nouveau)`
 - tables(**id**, libelle) `(nouveau)`
-- commandes(**id**, date, **#idClient**, **#idServeur**, **#idTable**) `(modifié)`
+- commandes(**id**, date, **#idClient?**, **#idServeur**, **#idTable?**) `(modifié)`
+  - Ajout des colonnes `#idServeur` et `#idTable`
 
 ### Reponse au piege
 - Une table de la salle et une commande sont deux choses différentes car une `table` de la salle sert juste d'information pour savoir où mettre la `commande`, tandis que la `commande` contient la reference de la table ainsi que les informatins du `client` et les details du `commande`
 - Le nom `table` pose un probleme en SQL car c'est un mot qui existe deja dans SQL pour representé une table de base de données
+
+
+
+# Niveau 2 – Intermédiaire (étapes 6 à 9)
+
+## Étape 6 – Les paiements
+### Schema relationnelle
+- modePayements(**id**, libelle) `(nouveau)`
+- commandePayements(**id**,  **#idCommande**, **#idModePayement**, montant) `(nouveau)`
+
+### Reponse au piege
+- une colonne `montant_paye` dans la table des commandes ne suffit pas car le monde de payement peut etre fait sous plusieurs facons et une seule colonne `montant_paye` ne suffit pas a stocker ces differents mode
+- Le mode de payement est une table de reference
+  - `contrainte CHECK` est juste une contraite que le ligne doit respecter pour etre accepter lors de l'isertion
+  - `table de référence` est une table qui contient les references d'un element utiliser dans les autres tables

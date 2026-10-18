@@ -13,13 +13,3 @@ INSERT INTO clients (nom) VALUES
 INSERT INTO commandes (daty, idClient) VALUES
 ('2026-10-13', 1),
 ('2026-10-14', 2);
--- Verification
-
-SELECT c.id AS commande, c.daty,
-CASE 
-    WHEN c.idClient ISNULL THEN 'Client de passage'
-    ELSE cl.nom
-END 
-AS client
-FROM commandes c LEFT JOIN clients cl
-ON c.idClient = cl.id;

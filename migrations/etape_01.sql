@@ -12,7 +12,3 @@ INSERT INTO plats (libelle, prix) VALUES
 ('Soupe chinoise', 6000),
 ('Mofo gasy (les 4)', 1000),
 ($$Ranon'ampango$$, 500);
--- '
-
--- Verification 
-SELECT * FROM plats ORDER BY prix DESC;
